@@ -1,20 +1,25 @@
 # AI Debugging Assistant
 
-AI Debugging Assistant is a Python-based tool that analyzes terminal errors and log output using an LLM to help identify likely root causes, explain why an error happened, and suggest possible fixes.
+AI Debugging Assistant is a Python-based tool that analyzes Python error messages and provides clear, simplified explanations along with suggested fixes using an LLM (Gemini API).
 
 ## Features
-- Reads error messages or logs
-- Identifies likely root causes
-- Explains errors in simpler language
-- Suggests possible fixes
+- Runs a target Python file and captures runtime errors
+- Identifies the root cause of the error
+- Explains errors in simple, human-readable language
+- Suggests specific fixes
 
 ## Project Structure
-- `main.py` — runs the program and controls the workflow
-- `parser.py` — reads and extracts useful parts of the error/log
-- `analyzer.py` — analyzes the error and generates debugging feedback
+- `main.py` — controls the program workflow
+- `parser.py` — runs the target file and captures error output
+- `analyzer.py` — sends errors to Gemini and generates explanations
+- `addTest.py` — sample file used for testing
 
-## Goal
-The goal of this project is to reduce the time and effort required to interpret long or confusing terminal errors.
+## Setup
 
-## Status
-Work in progress	
+1. Create and activate a virtual environment:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+
+Requirements
+google-genai
