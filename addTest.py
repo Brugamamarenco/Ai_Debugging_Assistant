@@ -1,6 +1,5 @@
-a = float(input("choose number for a to add: "))
-b = float(input("choose number for b to add: "))
-
+a = 5 
+b = 4
 
 adds =  a + b 
 

@@ -1,29 +1,32 @@
 import sys
-import parser  as pr
+import parser as pr
 import analyzer as an
 
 def main():
-	#checks if the correct amount of files were called and the targeted file 
+    # Check if a target file was provided
     if len(sys.argv) < 2:
-	print("Usage: python3 main.py <target_file")
-	return
-    #grabs the targeted file 
-    target_file =  sys.argv[1]
-	
-	
-    #calling error parser to grab the error of the file 
+        print("Usage: python3 main.py <target_file>")
+        return
+
+    # Get the file from command-line arguments
+    target_file = sys.argv[1]
+
+    # Run the file and capture errors
     error_text = pr.grab_error_from_file(target_file)
-    #calls analyze to analyze the error and find the root cause and simplify error
-    result = an.analyze_error(error_text)
-	
-    #prints error it got if not no error was recieved it put no error recieved
-    print("\n---------Program Output------------")   
-    print(error_text if  error_text else "No error")
-	
-    #printing the analyzed result
+
+    # Only call Gemini if there is an error
+    if error_text:
+        result = an.analyze_error(error_text)
+    else:
+        result = "No error to analyze"
+
+    # Print program output
+    print("\n---------Program Output------------")
+    print(error_text if error_text else "No error")
+
+    # Print analyzed result
     print("\n---------Analyzed Result-----------")
     print(result)
-#checks if the file was actually called on the terminal and if it was it runs it 
+
 if __name__ == "__main__":
     main()
-
